@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <title>Тригонометричні функції</title>
+    </head>
+    <body>
+        <h1>Тригонометричні функції</h1>
+        <p>Кут повинен бути більше нуля і менше 90 градусів.</p>
+        <input type="text" id="angle" placeholder="Введіть кут">
+        <select id="function">
+            <option value="sin">Синус</option>
+            <option value="cos">Косинус</option>
+            <option value="tan">Тангенс</option>
+        </select>
+        <button onclick="calculateTrigonometry()">Обрахувати</button>
+        <div id="result"></div>
+        <script>
+            function calculateTrigonometry() {
+                var angle = parseFloat(document.getElementById("angle").value);
+                var func = document.getElementById("function").value;
+
+                if (angle <= 0 || angle >= 90 || isNaN(angle)) {
+                    alert("Кут повинен бути більше нуля і менше 90 градусів.");
+                    return;
+                }
+
+                var functionName = "Math." + func + "(" + (angle*(Math.PI /180)) + ")";
+                var result = eval(functionName);
+
+                var output = func + "(" + angle + "deg) = " + result.toFixed(4);
+                document.getElementById("result").innerHTML = output;
+            }
+        </script>
+    </body>
+</html>

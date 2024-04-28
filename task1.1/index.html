@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <meta charset="UTF-8">
+        <title>Замовлення меблів</title>
+    </head>
+    <body>
+        <h1>Замовлення меблів</h1>
+        <form name="orderForm" action="process_order.php" onsubmit="return validateForm()" method="post">
+            <p>Виберіть виріб:
+            <select name="product">
+                <option value="">Виберіть...</option>
+                <option value="wardrobe">Шафа</option>
+                <option value="table">Стіл</option>
+                <option value="sideboard">Сервант</option>
+            </select>
+            </p>
+            <p>Виберіть матеріал:
+            <select name="material">
+                <option value="">Виберіть...</option>
+                <option value="oak">Дуб</option>
+                <option value="walnut">Горіх</option>
+                <option value="beech">Бук</option>
+            </select>
+            </p>
+            <p>Кількість:
+            <input type="text" name="quantity" onchange="validateQuantity(this)">
+            </p>
+            <button type="submit">Замовити</button>
+        </form>
+
+        <script>
+            function validateQuantity(input) {
+                var value = input.value;
+                if (value === "" || isNaN(value) || parseInt(value) <= 0) {
+                    alert("Будь ласка, введіть коректну кількість.");
+                    input.focus();
+                    input.select();
+                }
+            }
+        </script>
+    </body>
+</html>
